@@ -23,6 +23,13 @@ steps:
     python -m pip install --upgrade pip
     pip install -r requirements.txt
   displayName: 'Install dependencies'
+  
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.ArtifactStagingDirectory)'
+    artifact: 'drop'
+    publishLocation: 'pipeline'
+  displayName: 'Publish artifacts'
 
 # - script: |
 #     pip install pytest pytest-azurepipelines
